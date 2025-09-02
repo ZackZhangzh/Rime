@@ -1,0 +1,26 @@
+patch:
+  "speller/algebra/+":
+    - erase/^xx$/ # 首选保留
+    # 小鹤双拼
+    # zh/ch/sh ↔ z/c/s
+    - derive/^v/z/
+    - derive/^z/v/
+    - derive/^i/c/
+    - derive/^c/i/
+    - derive/^u/s/
+    - derive/^s/u/
+    # in, en ↔ ing, eng
+    - derive/n$/k/
+    - derive/k$/n/
+    - derive/f$/g/
+    - derive/g$/f/
+
+  # 语言模型
+  "grammar/language": wanxiang-lts-zh-hans
+  "grammar/collocation_max_length": 5
+  "grammar/collocation_min_length": 2
+
+  # translator 内加载
+  "translator/contextual_suggestions": true
+  "translator/max_homophones": 7
+  "translator/max_homographs": 7
