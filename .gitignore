@@ -13,3 +13,4 @@ build
 *.gram
 # *.custom.yaml
 
+*.bin

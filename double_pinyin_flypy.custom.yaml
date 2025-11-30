@@ -1,20 +1,32 @@
 patch:
+  # 模糊音
   "speller/algebra/+":
-    - erase/^xx$/ # 首选保留
     # 小鹤双拼
-    # zh/ch/sh ↔ z/c/s
-    - derive/^v/z/
-    - derive/^z/v/
-    - derive/^i/c/
-    - derive/^c/i/
-    - derive/^u/s/
-    - derive/^s/u/
-    # in, en ↔ ing, eng
-    - derive/n$/k/
-    - derive/k$/n/
+    # in ↔ ing, en ↔ eng
+    - derive/b$/k/
+    - derive/k$/b/
     - derive/f$/g/
     - derive/g$/f/
-
+    # # zh/ch/sh ↔ z/c/s
+    # - derive/^v/z/
+    # - derive/^z/v/
+    # - derive/^i/c/
+    # - derive/^c/i/
+    # - derive/^u/s/
+    # - derive/^s/u/
+  switches:
+    - name: ascii_mode
+      reset: 1
+      states: [中文, 英文]
+    - name: emoji_suggestion
+      reset: 1
+      states: ["😣️", "😁️"]
+    - name: full_shape
+      states: [半角, 全角]
+      reset: 0
+    - name: ascii_punct
+      states: ["。，", "．，"]
+      reset: 1
   # 语言模型
   "grammar/language": wanxiang-lts-zh-hans
   "grammar/collocation_max_length": 5
